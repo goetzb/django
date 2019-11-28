@@ -488,6 +488,12 @@ CACHE_MIDDLEWARE_KEY_PREFIX = ''
 CACHE_MIDDLEWARE_SECONDS = 600
 CACHE_MIDDLEWARE_ALIAS = 'default'
 
+#########
+# ADMIN #
+#########
+
+ADMIN_ENABLE_NAV_SIDEBAR = True
+
 ##################
 # AUTHENTICATION #
 ##################

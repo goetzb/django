@@ -3,6 +3,7 @@ from functools import update_wrapper
 from weakref import WeakSet
 
 from django.apps import apps
+from django.conf import settings
 from django.contrib.admin import ModelAdmin, actions
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.core.exceptions import ImproperlyConfigured
@@ -302,14 +303,18 @@ class AdminSite:
         """
         script_name = request.META['SCRIPT_NAME']
         site_url = script_name if self.site_url == '/' and script_name else self.site_url
-        return {
+        context = {
             'site_title': self.site_title,
             'site_header': self.site_header,
             'site_url': site_url,
             'has_permission': self.has_permission(request),
             'available_apps': self.get_app_list(request),
             'is_popup': False,
+            'nav_sidebar_enabled': settings.ADMIN_ENABLE_NAV_SIDEBAR,
         }
+        if settings.ADMIN_ENABLE_NAV_SIDEBAR:
+            context['app_list'] = self.get_app_list(request)
+        return context
 
     def password_change(self, request, extra_context=None):
         """
@@ -496,14 +501,13 @@ class AdminSite:
         Display the main admin index page, which lists all of the installed
         apps that have been registered in this site.
         """
-        app_list = self.get_app_list(request)
-
         context = {
             **self.each_context(request),
             'title': self.index_title,
-            'app_list': app_list,
             **(extra_context or {}),
         }
+        if 'app_list' not in context:
+            context['app_list'] = self.get_app_list(request)
 
         request.current_app = self.name
 

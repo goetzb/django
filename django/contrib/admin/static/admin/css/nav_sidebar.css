@@ -1,0 +1,52 @@
+#content {
+    float: left;
+    width: calc(100% - 280px);
+}
+
+.dashboard #content {
+    width: calc(100% - 580px);
+}
+
+.nav-sidebar {
+    background: #f8f8f8;
+    float: left;
+    font-size: 13px;
+    width: 200px;
+}
+
+.nav-app {
+    margin: 20px 0;
+}
+
+.nav-app:first-child {
+    margin-top: 0;
+}
+
+.nav-app-name {
+    background: #79aec8;
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    padding: 8px;
+    text-transform: uppercase;
+}
+
+.nav-app-name:link, .nav-app-name:visited {
+    color: #fff;
+}
+
+.nav-app-name:hover {
+    text-decoration: underline;
+}
+
+.nav-model {
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+@media (max-width: 1024px) {
+    .nav-sidebar {
+        display: none;
+    }
+}

@@ -1,0 +1,21 @@
+{% load i18n %}
+<nav class="nav-sidebar">
+    {% for app in app_list %}
+        <div class="nav-app nav-app-{{ app.app_label }}">
+            <a
+                class="nav-app-name"
+                href="{{ app.app_url }}"
+                title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}"
+            >{{ app.name }}</a>
+            {% for model in app.models %}
+                <div class="nav-model nav-model-{{ model.object_name|lower }}">
+                    {% if model.admin_url %}
+                        <a href="{{ model.admin_url }}">{{ model.name }}</a></th>
+                    {% else %}
+                        {{ model.name }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</nav>
