@@ -10,7 +10,7 @@
             {% for model in app.models %}
                 <div class="nav-model nav-model-{{ model.object_name|lower }}">
                     {% if model.admin_url %}
-                        <a href="{{ model.admin_url }}">{{ model.name }}</a></th>
+                        <a href="{{ model.admin_url }}">{{ model.name }}</a>
                     {% else %}
                         {{ model.name }}
                     {% endif %}
