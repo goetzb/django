@@ -313,7 +313,7 @@ class AdminSite:
             'nav_sidebar_enabled': settings.ADMIN_ENABLE_NAV_SIDEBAR,
         }
         if settings.ADMIN_ENABLE_NAV_SIDEBAR:
-            context['app_list'] = self.get_app_list(request)
+            context['nav_app_list'] = self.get_app_list(request)
         return context
 
     def password_change(self, request, extra_context=None):
@@ -501,13 +501,13 @@ class AdminSite:
         Display the main admin index page, which lists all of the installed
         apps that have been registered in this site.
         """
+        app_list = self.get_app_list(request)
         context = {
             **self.each_context(request),
+            'app_list': app_list,
             'title': self.index_title,
             **(extra_context or {}),
         }
-        if 'app_list' not in context:
-            context['app_list'] = self.get_app_list(request)
 
         request.current_app = self.name
 
