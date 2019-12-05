@@ -502,10 +502,11 @@ class AdminSite:
         apps that have been registered in this site.
         """
         app_list = self.get_app_list(request)
+
         context = {
             **self.each_context(request),
-            'app_list': app_list,
             'title': self.index_title,
+            'app_list': app_list,
             **(extra_context or {}),
         }
 
