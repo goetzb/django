@@ -2891,20 +2891,6 @@ The default value for the X-Frame-Options header used by
 
     In older versions, the default value is ``SAMEORIGIN``.
 
-Admin
-=====
-
-Settings for :mod:`django.contrib.admin`.
-
-.. setting:: ADMIN_ENABLE_NAV_SIDEBAR
-
-``ADMIN_ENABLE_NAV_SIDEBAR``
-----------------------------
-
-Default: ``True``
-
-If set to ``True``, will enable the admin's navigation sidebar.
-
 Auth
 ====
 

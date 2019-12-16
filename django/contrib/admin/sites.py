@@ -3,7 +3,6 @@ from functools import update_wrapper
 from weakref import WeakSet
 
 from django.apps import apps
-from django.conf import settings
 from django.contrib.admin import ModelAdmin, actions
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.core.exceptions import ImproperlyConfigured
@@ -50,6 +49,8 @@ class AdminSite:
 
     # URL for the "View site" link at the top of each admin page.
     site_url = '/'
+
+    enable_nav_sidebar = True
 
     _empty_value_display = '-'
 
@@ -310,9 +311,9 @@ class AdminSite:
             'has_permission': self.has_permission(request),
             'available_apps': self.get_app_list(request),
             'is_popup': False,
-            'nav_sidebar_enabled': settings.ADMIN_ENABLE_NAV_SIDEBAR,
+            'nav_sidebar_enabled': self.enable_nav_sidebar,
         }
-        if settings.ADMIN_ENABLE_NAV_SIDEBAR:
+        if self.enable_nav_sidebar is True:
             context['nav_app_list'] = self.get_app_list(request)
         return context
 

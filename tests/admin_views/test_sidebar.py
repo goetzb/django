@@ -1,9 +1,26 @@
+from django.contrib import admin
 from django.contrib.auth.models import User
 from django.test import TestCase, override_settings
-from django.urls import reverse
+from django.urls import path, reverse
 
 
-@override_settings(ROOT_URLCONF='admin_views.urls')
+class AdminSiteWithSidebar(admin.AdminSite):
+    pass
+
+
+class AdminSiteWithoutSidebar(admin.AdminSite):
+    enable_nav_sidebar = False
+
+
+site_with_sidebar = AdminSiteWithSidebar(name="test_with_sidebar")
+site_without_sidebar = AdminSiteWithoutSidebar(name="test_without_sidebar")
+
+urlpatterns = [
+    path('test_sidebar/admin/', site_with_sidebar.urls),
+    path('test_wihout_sidebar/admin/', site_without_sidebar.urls),
+]
+
+
 class AdminSidebarTests(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -12,18 +29,18 @@ class AdminSidebarTests(TestCase):
     def setUp(self):
         self.client.force_login(self.superuser)
 
-    @override_settings(ADMIN_ENABLE_NAV_SIDEBAR=True)
+    @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
     def test_sidebar_appears_on_index(self):
-        response = self.client.get(reverse('admin:index'))
+        response = self.client.get(reverse('test_with_sidebar:index'))
         self.assertContains(response, '<nav class="nav-sidebar">')
 
-    @override_settings(ADMIN_ENABLE_NAV_SIDEBAR=False)
+    @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
     def test_sidebar_disabled(self):
-        response = self.client.get(reverse('admin:index'))
+        response = self.client.get(reverse('test_without_sidebar:index'))
         self.assertNotContains(response, '<nav class="nav-sidebar">')
 
-    @override_settings(ADMIN_ENABLE_NAV_SIDEBAR=True)
+    @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
     def test_sidebar_unauthenticated(self):
         self.client.logout()
-        response = self.client.get(reverse('admin:login'))
+        response = self.client.get(reverse('test_with_sidebar:login'))
         self.assertNotContains(response, '<nav class="nav-sidebar">')
