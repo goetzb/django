@@ -1,17 +1,27 @@
+#container {
+    min-height: 100vh;
+}
+
+.login #container {
+    min-height: auto;
+}
+
 #content {
     float: left;
-    width: calc(100% - 280px);
+    width: calc(100% - 300px);
+    padding-left: 260px;
 }
 
 .dashboard #content {
-    width: calc(100% - 580px);
+    width: calc(100% - 600px);
 }
 
 .nav-sidebar {
     background: #f8f8f8;
-    float: left;
+    height: 100vh;
     font-size: 13px;
-    width: 200px;
+    position: fixed;
+    width: 220px;
 }
 
 .nav-app {
