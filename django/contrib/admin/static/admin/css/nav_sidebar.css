@@ -12,6 +12,10 @@
     padding-left: 260px;
 }
 
+.login #content {
+    width: 100%;
+}
+
 .dashboard #content {
     width: calc(100% - 600px);
 }
