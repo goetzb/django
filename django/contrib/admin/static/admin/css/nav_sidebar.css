@@ -20,12 +20,22 @@
     width: calc(100% - 600px);
 }
 
+.nav-sidebar-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: #79aec8;
+    width: 220px;
+    z-index: -100;
+}
+
 .nav-sidebar {
     background: #f8f8f8;
     height: 100vh;
     font-size: 13px;
     position: fixed;
     width: 220px;
+    overflow-y: auto;
 }
 
 .nav-sidebar ul, .nav-sidebar li {
