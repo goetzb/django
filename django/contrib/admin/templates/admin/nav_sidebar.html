@@ -17,6 +17,9 @@
                     {% else %}
                         {{ model.name }}
                     {% endif %}
+                    {% if model.add_url %}
+                    <a href="{{ model.add_url }}" class="addlink">{% translate 'Add' %}</a>
+                    {% endif %}
                 </li>
             {% endfor %}
             </ul>
