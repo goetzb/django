@@ -549,6 +549,10 @@ ul.messagelist {
     margin: 0;
 }
 
+.nav-sidebar + ul.messagelist {
+    margin-left: 220px;
+}
+
 ul.messagelist li {
     display: block;
     font-weight: 400;

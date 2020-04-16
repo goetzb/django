@@ -1,21 +1,26 @@
 {% load i18n %}
-<nav class="nav-sidebar">
+<nav class="nav-sidebar"  aria-label="Sidebar Menu">
+  <h1 class="visually-hidden">Main Menu</h1>
+    <ul>
     {% for app in nav_app_list %}
-        <div class="nav-app nav-app-{{ app.app_label }}">
+        <li class="nav-app nav-app-{{ app.app_label }}{% if app.app_url == request.path %} nav-sidebar-active{% endif %}"{% if app.app_url == request.path %} aria-current="page"{% endif %}>
             <a
                 class="nav-app-name"
                 href="{{ app.app_url }}"
                 title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}"
             >{{ app.name }}</a>
+            <ul>
             {% for model in app.models %}
-                <div class="nav-model nav-model-{{ model.object_name|lower }}">
+                <li class="nav-model nav-model-{{ model.object_name|lower }}{% if model.admin_url == request.path %} nav-sidebar-active{% endif %}"{% if model.admin_url == request.path %} aria-current="page"{% endif %}>
                     {% if model.admin_url %}
                         <a href="{{ model.admin_url }}">{{ model.name }}</a>
                     {% else %}
                         {{ model.name }}
                     {% endif %}
-                </div>
+                </li>
             {% endfor %}
-        </div>
+            </ul>
+        </li>
     {% endfor %}
+    </ul>
 </nav>
