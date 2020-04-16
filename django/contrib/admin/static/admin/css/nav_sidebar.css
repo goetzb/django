@@ -77,6 +77,14 @@
     text-decoration: none;
 }
 
+.nav-sidebar [aria-current=page] .nav-app-name,
+.nav-sidebar .nav-sidebar-app-active .nav-app-name {
+    /* color: #417690;
+    background-color: #ffc; */
+    border-left: 6px solid #417690;
+    padding-left: 6px;
+}
+
 .nav-sidebar .nav-app .nav-model {
     font-weight: bold;
     padding: 5px 12px;
