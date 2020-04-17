@@ -32,15 +32,15 @@ class AdminSidebarTests(TestCase):
     @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
     def test_sidebar_appears_on_index(self):
         response = self.client.get(reverse('test_with_sidebar:index'))
-        self.assertContains(response, '<nav class="nav-sidebar">')
+        self.assertContains(response, '<nav class="nav-sidebar"')
 
     @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
     def test_sidebar_disabled(self):
         response = self.client.get(reverse('test_without_sidebar:index'))
-        self.assertNotContains(response, '<nav class="nav-sidebar">')
+        self.assertNotContains(response, '<nav class="nav-sidebar"')
 
     @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
     def test_sidebar_unauthenticated(self):
         self.client.logout()
         response = self.client.get(reverse('test_with_sidebar:login'))
-        self.assertNotContains(response, '<nav class="nav-sidebar">')
+        self.assertNotContains(response, '<nav class="nav-sidebar"')
