@@ -1,15 +1,10 @@
-#container {
-    min-height: 100vh;
-}
-
-.login #container {
-    min-height: auto;
+ul.messagelist {
+    margin-left: 220px;
 }
 
 #content {
     float: left;
     width: calc(100% - 300px);
-    padding-left: 260px;
 }
 
 .login #content {
@@ -20,22 +15,13 @@
     width: calc(100% - 600px);
 }
 
-.nav-sidebar-background {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    background: #79aec8;
-    width: 220px;
-    z-index: -100;
-}
-
 .nav-sidebar {
+    float: left;
     background: #ffffff;
-    height: 100vh;
     font-size: 13px;
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 220px;
-    overflow-y: auto;
 }
 
 .nav-sidebar ul, .nav-sidebar li {
@@ -45,9 +31,8 @@
     text-indent: 0;
 }
 
-.breadcrumbs + .nav-sidebar { 
+.breadcrumbs + .nav-sidebar {
     border-top: 3px solid #417690;
-    /* padding-top: 3px; */
 }
 
 .nav-sidebar .nav-app {
