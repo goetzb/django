@@ -109,4 +109,14 @@ ul.messagelist {
     .nav-sidebar {
         display: none;
     }
+
+    .dashboard #content {
+        width: calc(100% - 350px);
+    }
+}
+
+@media (max-width: 767px) {
+    .dashboard #content {
+        width: calc(100% - 30px);
+    }
 }
