@@ -15,6 +15,8 @@ class AdminSiteWithoutSidebar(admin.AdminSite):
 site_with_sidebar = AdminSiteWithSidebar(name="test_with_sidebar")
 site_without_sidebar = AdminSiteWithoutSidebar(name="test_without_sidebar")
 
+site_with_sidebar.register(User)
+
 urlpatterns = [
     path('test_sidebar/admin/', site_with_sidebar.urls),
     path('test_wihout_sidebar/admin/', site_without_sidebar.urls),
@@ -44,3 +46,9 @@ class AdminSidebarTests(TestCase):
         self.client.logout()
         response = self.client.get(reverse('test_with_sidebar:login'))
         self.assertNotContains(response, '<nav class="nav-sidebar"')
+
+    @override_settings(ROOT_URLCONF='admin_views.test_sidebar')
+    def test_sidebar_aria_current_page(self):
+        response = self.client.get(reverse('test_with_sidebar:auth_user_changelist'))
+        self.assertContains(response, '<nav class="nav-sidebar"')
+        self.assertContains(response, '<li class="nav-model nav-model-user" aria-current="page">')

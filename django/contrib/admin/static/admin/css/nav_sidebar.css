@@ -62,8 +62,7 @@ ul.messagelist {
 }
 
 .nav-sidebar [aria-current=page] .nav-app-name,
-.nav-sidebar .nav-sidebar-active .nav-app-name,
-.nav-sidebar .nav-sidebar-active .nav-app-name:hover {
+.nav-sidebar [aria-current=page] .nav-app-name:hover {
     color: #417690;
     background-color: #ffc;
     border-left: 6px solid #417690;
@@ -89,15 +88,13 @@ ul.messagelist {
     float: right;
 }
 
-.nav-sidebar .nav-app .nav-model[aria-current=page],
-.nav-sidebar .nav-app .nav-model.nav-sidebar-active {
+.nav-sidebar .nav-app .nav-model[aria-current=page] {
     background-color: #ffc;
     border-left: 6px solid #417690;
     padding-left: 6px;
 }
 
-.nav-sidebar .nav-model[aria-current=page] a,
-.nav-sidebar .nav-model.nav-sidebar-active a {
+.nav-sidebar .nav-model[aria-current=page] a {
     color: #417690;
 }
 
