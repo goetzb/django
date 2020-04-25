@@ -311,10 +311,8 @@ class AdminSite:
             'has_permission': self.has_permission(request),
             'available_apps': self.get_app_list(request),
             'is_popup': False,
-            'nav_sidebar_enabled': self.enable_nav_sidebar,
+            'is_nav_sidebar_enabled': self.enable_nav_sidebar,
         }
-        if self.enable_nav_sidebar is True:
-            context['nav_app_list'] = self.get_app_list(request)
         return context
 
     def password_change(self, request, extra_context=None):
