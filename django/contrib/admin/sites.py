@@ -304,7 +304,7 @@ class AdminSite:
         """
         script_name = request.META['SCRIPT_NAME']
         site_url = script_name if self.site_url == '/' and script_name else self.site_url
-        context = {
+        return {
             'site_title': self.site_title,
             'site_header': self.site_header,
             'site_url': site_url,
@@ -313,7 +313,6 @@ class AdminSite:
             'is_popup': False,
             'is_nav_sidebar_enabled': self.enable_nav_sidebar,
         }
-        return context
 
     def password_change(self, request, extra_context=None):
         """
