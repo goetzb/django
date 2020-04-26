@@ -4,6 +4,9 @@
 <head>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+{% if not is_popup and is_nav_sidebar_enabled %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/nav_sidebar.css" %}">
+{% endif %}
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
 {% block extrahead %}{% endblock %}
@@ -12,9 +15,6 @@
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}">
     {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
 {% endblock %}
-{% if not is_popup and is_nav_sidebar_enabled %}
-    <link rel="stylesheet" type="text/css" href="{% static "admin/css/nav_sidebar.css" %}">
-{% endif %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
 </head>
 {% load i18n %}
@@ -104,7 +104,7 @@
 <!-- END Container -->
 
 {% if not is_popup and is_nav_sidebar_enabled %}
-    <script src="{% static 'admin/js/nav_sidebar.js' %}"></script>
+    <script src="{% static 'admin/js/nav_sidebar.js' %}" async></script>
 {% endif %}
 </body>
 </html>

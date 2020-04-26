@@ -25,7 +25,8 @@
         "strict": ["warn", "function"]
     },
     "env": {
-        "browser": true
+        "browser": true,
+        "es6": true
     },
     "globals": {
         "django": false

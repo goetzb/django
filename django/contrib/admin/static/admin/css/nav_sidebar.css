@@ -82,10 +82,6 @@ html, body {
     margin-left: 0;
 }
 
-#nav-sidebar .module td:last-child {
-    display: none;
-}
-
 #nav-sidebar .module th {
     width: 100%;
 }
