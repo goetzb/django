@@ -3,14 +3,7 @@
     let toggleNavSidebar = document.getElementById('toggle-nav-sidebar');
     let navSidebarIsOpen = localStorage.getItem('django.admin.navSidebarIsOpen');
 
-    if (navSidebarIsOpen === null) {
-        navSidebarIsOpen = 'true';
-    }
-    if (navSidebarIsOpen === 'true') {
-        main.classList.add('shifted');
-    } else {
-        main.classList.remove('shifted');
-    }
+    main.classList.toggle('shifted', navSidebarIsOpen === 'true');
 
     toggleNavSidebar.addEventListener('click', function() {
         'use strict';
